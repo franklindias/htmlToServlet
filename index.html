@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Html to Servlet</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+	function converter(){
+		var codeHtml = document.getElementById('codeHtml').value;
+		var lines = codeHtml.split("\n");
+		var linesConvertidas = [];
+
+			document.getElementById('result').innerHTML = "";
+
+		lines.forEach(function(line){
+
+			resultLine = line.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, '\\"');
+
+			document.getElementById('result').innerHTML += 
+				'out.append("'+resultLine+'");<br/>';
+
+		});
+
+	}
+	</script>
+</head>
+<body>
+	<textarea name="codeHtml" id="codeHtml" cols="100" rows="20" ... >
+	</textarea>
+	<div style="float:right; padding:20px;">
+		<div class="language-html" data-lang="html" id="result">
+		</div>
+	</div>
+	<br/>
+	<button name="convert" onclick="javascript:converter();">Converter</button>
+</body>
+</html>
